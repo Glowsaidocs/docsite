@@ -21,23 +21,30 @@ This guide includes:
 
 ### Create a Team
 
-After logging in Glows.ai platform, click your profile icon in the top-right corner.
-
-Select `Teams`, then click `Create Teams` to start creating your team.
+After logging into the Glows.ai platform, click on your personal information in the top right corner, then click `Teams` in the pop-up window. Next, click `Create Teams` to enter the team creation process.
 
 ![image-20251106105639587](../docs-images/p05team/01.png)
 
-- Enter the team name and description, then click `Next` to proceed.
+Currently, there are two versions: Free and Basic. You can choose the appropriate version based on your team's project needs. If you have more advanced requirements, you can click `Contact us` to reach out for customized development.
 
 ![image-20251106105804030](../docs-images/p05team/02.png)
 
-During the beta phase, the default team **Storage** is set to **0**. After creating your team, you can contact our assistant to increase your storage capacity. Various storage plans will be launched soon.
+After selecting the team package type, you can proceed to set the team name and description.
 
 ![image-20251106140945551](../docs-images/p05team/03.png)
 
-After clicking `Confirm`, you will see the team’s basic information. **Owner** will be assigned by default. You can send this account info to our assistant to configure a suitable **Storage plan**.
+Select the package purchase duration. You can renew manually later, and then click `Next`.
 
 ![image-20251106110316717](../docs-images/p05team/04.png)
+
+Once you confirm that the information is correct, click `Create Team` to complete the team creation.
+
+![image-20251106110316717](../docs-images/p05team/0401.png)
+
+After successful creation, you will see the team's basic information. A default team creator account will be assigned, and it will be automatically bound to your main account.
+
+![image-20251106110316717](../docs-images/p05team/0402.png)
+
 
 ### Switch to Glows.ai Team Workspace
 
@@ -135,13 +142,23 @@ Click `Action` and then `Release` to release a member’s instance.
 
 ### Storage Management
 
-In `Storage Space`, select `Admin View`, you can view both the team’s total storage usage and the personal storage usage of each member.
+#### Purchase Storage
+
+On the `Storage Space` page, switch to `Admin View`, then click the `Upgrade` button to select the required plan. After that, click `Recharge` to complete the Storage purchase.
+
+**Note:** To enable **team Storage**, you must first switch to `Admin View` as shown. If you purchase Storage under `Member View`, it will be **personal Storage**, not team Storage.
 
 ![image-20251111164737613](../docs-images/p05team/19.png)
 
-In `Team Storage Space`, click `Manage` to access the storage allocation page. Click `Modify` to set **Datadrive** and **Snapshot** quotas, then click `Update` to save the settings.
+#### Allocate Storage
+
+In **`Storage Space`**, switch to **`Admin View`** to see overall and per-member storage usage.
 
 ![image-20251106161942160](../docs-images/p05team/20.png)
+
+Click **Manage** under **Team Storage Space** to modify **Datadrive** and **Snapshot** quotas, then click **`Update`** to save.
+
+![image-20251106161942160](../docs-images/p05team/201.png)
 
 ### Datadrive Management
 
@@ -190,11 +207,15 @@ All team snapshots are listed in this interface. Currently, the only supported o
 
 ### Billing Management
 
-In `Billing`, select `Admin View`, and you can review all members’ billing information. You can filter the records by member or by type.
+In the `Billing` interface, switch to `Admin View` to view the billing data for all team members. The billing query supports filtering by member and billing type.
+
 ![image-20251111185112362](../docs-images/p05team/29.png)
 
-You can also click `Recharge` to top up credits.
- **Note:** Only the team owner is allowed to recharge credits. After recharging, the owner can then distribute credits to admins and members.
+Additionally, in the **Billing** interface, you can click the **Recharge** button to add funds. It supports direct transfers from the main account, and you need to select `USD` for the `Select Your Payment Currency`.
+
+![image-20251111185112362](../docs-images/p05team/291.png)
+
+**Note:** Currently, the recharge function is only available to the team creator. The team creator must add funds first and then distribute them to team managers and regular members.
 
 ### Edit Team Information
 
