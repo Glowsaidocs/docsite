@@ -23,17 +23,26 @@ Glows.ai 的團隊版功能，將構建團隊協作體系，實現資源集中�
 
 ![image-20251106105639587](../../../../../docs/docs-images/p05team/01.png)
 
-- 首先輸入團隊名稱和簡介，然後點擊 `Next` 進入下一步。
+目前有 Free 和 Basic 兩個版本，您可以根據團隊項目需要選擇合適版本，如果有更進階需求，可以點擊`Contact us`聯繫我們客製化開發。
 
 ![image-20251106105804030](../../../../../docs/docs-images/p05team/02.png)
 
-在內測階段，默認初始團隊 Storage 為 0，您創建團隊後可以聯繫我們的小幫手幫您增加 Storage，其他存儲容量套餐會在未來陸續上線。
+選擇好團隊套餐類型後，可以繼續設置團隊名稱和簡介信息。
 
 ![image-20251106140945551](../../../../../docs/docs-images/p05team/03.png)
 
-點擊 `Confirm` 後，您會看⾒團隊基本信息，默認會分配⼀個團隊創建者(**Owner**)帳號，您將團隊創建者帳號發送給我們的⼩幫⼿即可配置 Storage 套餐了。
+選擇套餐購買時長，後續可以手動續費，然後點擊 `Next`。
 
 ![image-20251106110316717](../../../../../docs/docs-images/p05team/04.png)
+
+確認信息無誤，點擊`Create Team`即可完成團隊創建。
+
+![image-20251106110316717](../../../../../docs/docs-images/p05team/0401.png)
+
+創建成功後，您會看⾒團隊基本信息，默認會分配⼀個團隊創建者帳號，並自動綁定到您主賬號。
+
+![image-20251106110316717](../../../../../docs/docs-images/p05team/0402.png)
+
 
 ### 切換到團隊介面
 
@@ -117,13 +126,23 @@ Glows.ai 的團隊版功能，將構建團隊協作體系，實現資源集中�
 
 ### Storage 管理
 
-在 `Storage Space` 介面選擇 `Admin View`，可以看到團隊 Storage 的使用情況，還有每個團隊成員個人 Storage 的使用情況。
+#### 購買Storage
+
+在`Storage Space`介面選擇`Admin View`，然後點擊`Upgrade`按鈕選擇需要的套餐，再點擊`Recharge`即可完成 Storage 購買。
+
+**注意：**開通團隊 Storage 一定需要按圖示步驟先點擊 `Admin View`，如果在`Member View`下則是開通的個人 Storage。
 
 ![image-20251111164737613](../../../../../docs/docs-images/p05team/19.png)
 
-點擊 `Team Storage Space` 的 `Manage` 按鈕，進入團隊 Storage 分配介面，先點擊 `Modify`，然後可以設置 **Datadrive** 和 **Snapshot** 空間額度，最後點擊 `Update` 完成分配。
+#### 分配Storage
+
+在`Storage Space`介面選擇`Admin View`，可以看到團隊Storage的使用情況，還有每個團隊成員個人Storage的使用情況。
 
 ![image-20251106161942160](../../../../../docs/docs-images/p05team/20.png)
+
+點擊 Team Storage Space 的 Manage 按鈕，進入團隊Storage分配介面，先點擊 Modify，然後可以設置 Datadrive和Snapshot空間額度，最後點擊 Update完成分配。
+
+![image-20251106161942160](../../../../../docs/docs-images/p05team/201.png)
 
 ### Datadrive 管理
 
@@ -175,7 +194,9 @@ Glows.ai 的團隊版功能，將構建團隊協作體系，實現資源集中�
 
 ![image-20251111185112362](../../../../../docs/docs-images/p05team/29.png)
 
-同時在 `Billing` 介面可以點擊 `Recharge` 按鈕進行儲值。
+同時在 **Billing** 介面可以點擊 **Recharge** 按鈕進行儲值，支持直接從主賬號轉入，`Select Your Payment Currency`需要選擇`USD`。
+
+![image-20251111185112362](../../../../../docs/docs-images/p05team/291.png)
 
 **注意：**目前團隊中儲值功能只有團隊創建者有，需要先有團隊創建者儲值後，分發給團隊管理和普通成員。
 
