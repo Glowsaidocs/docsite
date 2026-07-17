@@ -16,6 +16,7 @@ pnpm-debug.log*
 .vscode/
 
 # 其他常見忽略檔案
+**/.ipynb_checkpoints/
 .env
 .env.local
 .env.*.local

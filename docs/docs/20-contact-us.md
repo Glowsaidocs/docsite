@@ -1,11 +1,11 @@
 ---
 id: contact-us
-sidebar_position: 18
+sidebar_position: 20
 ---
 
-# お問い合わせ
+# Contact Us
 
-**Glows.ai** のご利用中にご不明な点やご意見がございましたら、以下の方法でお気軽にお問い合わせください。
+If you have any questions or suggestions while using **Glows.ai**, please reach out via email, Discord, or Line.
 
 **Email:** [support@glows.ai](mailto:support@glows.ai)
 

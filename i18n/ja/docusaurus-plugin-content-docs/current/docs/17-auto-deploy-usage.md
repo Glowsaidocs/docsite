@@ -3,61 +3,61 @@ id: auto-deploy-usage
 sidebar_position: 17
 ---
 
-# Glows.ai Auto Deploy Use Case
+# Glows.ai Auto Deploy 利用例
 
-Typically, deploying GPU-based services requires manually creating instances before use and releasing them afterward. This process becomes inefficient and inconvenient when GPU workloads are intermittent or request-driven.  
+通常、GPU ベースのサービスをデプロイする場合、利用前に手動でインスタンスを作成し、利用後に解放する必要があります。GPU ワークロードが断続的、またはリクエスト駆動型の場合、この手順は非効率で不便になりがちです。
 
-Glows.ai addresses this challenge with **Auto Deploy** —— a service that automatically manages GPU instances. Once configured, Auto Deploy provides you with a fixed service endpoint. When a request is sent to this endpoint, Glows.ai automatically creates an instance based on your configuration, executes the request, and returns the result. If the endpoint remains idle for a continuous period of **n** minutes, Glows.ai will automatically release the instance.  
+Glows.ai は、この課題を解決するために **Auto Deploy** を提供しています。Auto Deploy は GPU インスタンスを自動管理するサービスです。設定が完了すると、Auto Deploy は固定のサービスエンドポイントを提供します。このエンドポイントへリクエストを送信すると、Glows.ai が設定内容に基づいて自動的にインスタンスを作成し、リクエストを実行して結果を返します。エンドポイントが連続して **n** 分間アイドル状態になると、Glows.ai は自動的にインスタンスを解放します。
 
-In the following example, we’ll demonstrate how to use **Auto Deploy** with the **BreezyVoice WebUI** image.  
+以下の例では、**BreezyVoice WebUI** イメージで **Auto Deploy** を利用する方法を紹介します。
 
-Currently, you can customize the `Instance Idle Retention Period` and the `Maximum Number of Instances`.
+現在、`Instance Idle Retention Period` と `Maximum Number of Instances` をカスタマイズできます。
 
-- **Instance Idle Retention Period**: The duration an instance will remain active without receiving new requests before being automatically released.
-- **Maximum Number of Instances**: The maximum number of instances that can be launched under a single Auto Deploy.
+- **Instance Idle Retention Period**：新しいリクエストを受け取らない状態で、インスタンスを自動解放するまで保持する時間です。
+- **Maximum Number of Instances**：1 つの Auto Deploy 設定で起動できるインスタンスの最大数です。
 
-For scenarios compatible with previous logic, **Random** and **Round Robin** modes are also supported (for details on usage, refer to the [Advanced Usage](#advanced-usage)).
+以前のロジックと互換性が必要なシナリオでは、**Random** と **Round Robin** モードもサポートされています（利用方法の詳細は [高度な使い方](#高度な使い方) を参照してください）。
 
-## Basic Usage
+## 基本的な使い方
 
-### Configuring **Auto Deploy**
+### **Auto Deploy** を設定
 
-Enter the Auto Deploy and click the `New Deploy` in the top right corner to create a new configuration.
+Auto Deploy に入り、右上の `New Deploy` をクリックして新しい設定を作成します。
 
 ![01](../../../../../docs/docs-images/p17auto-deploy/01.png)
 
-Set the configuration name and description for easier identification.
+識別しやすいように、設定名と説明を入力します。
 
 ![02](../../../../../docs/docs-images/p17auto-deploy/02.png)
 
-Choose the GPU and environment required for the program to run. You can select either a custom snapshot you’ve created or a prebuilt system image.
+プログラムの実行に必要な GPU と環境を選択します。作成済みのカスタム Snapshot、またはシステム側で用意されたイメージを選択できます。
 
 ![03](../../../../../docs/docs-images/p17auto-deploy/03.png)
 
-Set the service port (`Port`) and the start command (`Start Command`) for the code.
+コードのサービスポート（`Port`）と起動コマンド（`Start Command`）を設定します。
 
-In this case, our service starts on port 8080, and the service code is located at `/BreezyVoice/api.py`, so the service port and start command are set as follows:
+この例では、サービスはポート 8080 で起動し、サービスコードは `/BreezyVoice/api.py` にあります。そのため、サービスポートと起動コマンドは以下のように設定します。
 
 ```bash
 Port: 8080
 Start Command: cd /BreezyVoice && python api.py
 ```
 
-Set the `Instance Idle Retention Period` to 10 minutes and the `Maximum Number of Instances` to 5.
+`Instance Idle Retention Period` を 10 分、`Maximum Number of Instances` を 5 に設定します。
 
 ![04](../../../../../docs/docs-images/p17auto-deploy/04.png)
 
-Finally, click `Confirm` to complete the configuration.
+最後に `Confirm` をクリックして設定を完了します。
 
-### Configuration Information
+### 設定情報
 
-Once the configuration is complete, you will see the corresponding service link and the details of the configuration.
+設定が完了すると、対応するサービスリンクと設定の詳細が表示されます。
 
 ![05](../../../../../docs/docs-images/p17auto-deploy/05.png)
 
-### Request the Auto Deploy Endpoint
+### Auto Deploy エンドポイントへリクエストを送信
 
-Simply replace the API link with the Auto Deploy link. If the service provides its own routing, add the relevant path after the Auto Deploy link. For example, the API request path for the service is deployed as `/v1/audio/speech`.
+API リンクを Auto Deploy リンクに置き換えるだけで利用できます。サービス側に独自のルーティングがある場合は、Auto Deploy リンクの後ろに該当するパスを追加してください。たとえば、このサービスの API リクエストパスは `/v1/audio/speech` としてデプロイされています。
 
 ```bash
 curl -X POST "https://tw-01.sgw.glows.ai:xxxxxx/v1/audio/speech" \
@@ -72,43 +72,43 @@ curl -X POST "https://tw-01.sgw.glows.ai:xxxxxx/v1/audio/speech" \
 
 ![06](../../../../../docs/docs-images/p17auto-deploy/06-1.png)
 
-After the request is complete, if no new requests are sent within 10 minutes (based on the `Instance Idle Retention Period` setting), the instance will automatically be released. The Auto Deploy interface will also display the total cost for the configuration and the **Instance Status**. The meanings of the `Instance Status` are as follows:
+リクエスト完了後、10 分以内に新しいリクエストが送信されない場合（`Instance Idle Retention Period` の設定に基づく）、インスタンスは自動的に解放されます。Auto Deploy 画面には、この設定の合計コストと **Instance Status** も表示されます。`Instance Status` の意味は以下のとおりです。
 
-- **Standby**: Indicates the configuration is normal, but no instances are running.
-- **Idle**: When a request is received, it indicates that the instance is being created. After the request is processed, the instance is being automatically released.
-- **Running**: The instance has been successfully created and is processing requests. After the request is processed, it will continue to wait for new requests. If no new requests come in for 5 minutes, the instance will be automatically released.
+- **Standby**：設定は正常ですが、実行中のインスタンスはありません。
+- **Idle**：リクエストを受信し、インスタンスを作成中であることを示します。リクエスト処理後、インスタンスは自動解放中になります。
+- **Running**：インスタンスが正常に作成され、リクエストを処理中です。リクエスト処理後も新しいリクエストを待機します。5 分間新しいリクエストがない場合、インスタンスは自動的に解放されます。
 
 ![07](../../../../../docs/docs-images/p17auto-deploy/07.png)
 
-## Advanced Usage
+## 高度な使い方
 
-For use cases requiring compatibility with the previous handling logic, the `Random` and `Round Robin` modes are also supported. You can set the `Deploy-Route-Rule` parameter in the request header, which supports the following values:
+以前の処理ロジックとの互換性が必要なユースケースでは、`Random` と `Round Robin` モードもサポートされています。リクエストヘッダーに `Deploy-Route-Rule` パラメータを設定できます。対応する値は以下のとおりです。
 
-1. **scale-out**: Start a new instance and return the result.
-   - If the total number of started instances equals the **Maximum Number of Instances**, an error code will be returned: `{"code": 1007, "msg": "deployment replica quota exceeded"}`
-2. **random**: Randomly select a running instance to forward the request and return the result.
-   - If no instances are running, an error code will be returned: `{"code": 1006, "msg": "route target not found"}`
-3. **round-robin**: Forward the request to the next instance in sequence and return the result.
-   - If no instances are running, an error code will be returned: `{"code": 1006, "msg": "route target not found"}`
-4. **`{Deploy-Route-Target}`**: Forward the request to a specific instance and return the result.
-   - If the specified **Deploy-Route-Target** cannot be found, an error code will be returned: `{"code": 1006, "msg": "route target not found"}`
+1. **scale-out**：新しいインスタンスを起動し、結果を返します。
+   - 起動済みインスタンスの総数が **Maximum Number of Instances** と等しい場合、エラーコード `{"code": 1007, "msg": "deployment replica quota exceeded"}` が返されます。
+2. **random**：実行中のインスタンスをランダムに選択し、リクエストを転送して結果を返します。
+   - 実行中のインスタンスがない場合、エラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
+3. **round-robin**：次のインスタンスへ順番にリクエストを転送し、結果を返します。
+   - 実行中のインスタンスがない場合、エラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
+4. **`{Deploy-Route-Target}`**：指定したインスタンスへリクエストを転送し、結果を返します。
+   - 指定した **Deploy-Route-Target** が見つからない場合、エラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
 
-In all four modes, the response header will include `Deploy-Route-Target`, indicating which instance the request has been forwarded to, making it easier for continuous requests.
+4 つのモードすべてで、レスポンスヘッダーには `Deploy-Route-Target` が含まれます。これにより、リクエストがどのインスタンスへ転送されたかを確認でき、継続的なリクエスト処理がしやすくなります。
 
-In the following example, our service starts on port 8080, and we use Python to create an HTTP server. Therefore, the service port and start command are set as follows:
+以下の例では、サービスはポート 8080 で起動し、Python を使用して HTTP サーバーを作成します。そのため、サービスポートと起動コマンドは以下のように設定します。
 
 ```bash
 Port: 8080
 Start Command: python -m http.server 8080
 ```
 
-In this tutorial, set the `Instance Idle Retention Period` to 3 minutes and the `Maximum Number of Instances` to 2.
+このチュートリアルでは、`Instance Idle Retention Period` を 3 分、`Maximum Number of Instances` を 2 に設定します。
 
 ![08](../../../../../docs/docs-images/p17auto-deploy/08.png)
 
-### scale-out Mode
+### scale-out モード
 
-Requesting this mode will start a new instance and return the result.
+このモードでリクエストすると、新しいインスタンスを起動して結果を返します。
 
 ```bash
 curl -i \
@@ -116,15 +116,15 @@ curl -i \
   -H "Deploy-Route-Rule: scale-out"
 ```
 
-The response header will display the `Deploy-Route-Target` value, which corresponds to the instance ID visible in the interface. You can also directly invoke the corresponding service in the instance by specifying **Deploy-Route-Rule** as the instance ID.
+レスポンスヘッダーには `Deploy-Route-Target` の値が表示されます。この値は画面上で確認できるインスタンス ID に対応しています。また、**Deploy-Route-Rule** にインスタンス ID を指定することで、該当インスタンス内のサービスを直接呼び出すこともできます。
 
 ![09](../../../../../docs/docs-images/p17auto-deploy/09.png)
 
-Note that if the total number of instances started through this Auto Deploy has reached the `Maximum Number of Instances`, requesting this mode will return an error code: `{"code": 1007, "msg": "deployment replica quota exceeded"}`.
+この Auto Deploy によって起動されたインスタンス総数が `Maximum Number of Instances` に達している場合、このモードでリクエストするとエラーコード `{"code": 1007, "msg": "deployment replica quota exceeded"}` が返されます。
 
-### random Mode
+### random モード
 
-From the instances started by Auto Deploy, randomly select one instance to forward the request and return the interface result.
+Auto Deploy によって起動されたインスタンスの中から 1 台をランダムに選択し、リクエストを転送してインターフェース結果を返します。
 
 ```bash
 curl -i \
@@ -134,15 +134,15 @@ curl -i \
 
 ![10](../../../../../docs/docs-images/p17auto-deploy/10.png)
 
-When two or more instances are running, the `Deploy-Route-Rule` in the response header will change randomly on consecutive requests.
+2 台以上のインスタンスが実行中の場合、連続してリクエストすると、レスポンスヘッダー内の `Deploy-Route-Rule` がランダムに変化します。
 
 ![11](../../../../../docs/docs-images/p17auto-deploy/11.png)
 
-If there are no instances running through this Auto Deploy, calling this mode will return an error code: `{"code": 1006, "msg": "route target not found"}`.
+この Auto Deploy で実行中のインスタンスがない場合、このモードを呼び出すとエラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
 
-### round-robin Mode
+### round-robin モード
 
-The request will be forwarded sequentially to the started instances and return the result.
+リクエストは起動済みインスタンスへ順番に転送され、結果が返されます。
 
 ```bash
 curl -i \
@@ -150,15 +150,15 @@ curl -i \
   -H "Deploy-Route-Rule: round-robin"
 ```
 
-When two or more instances are running, making consecutive requests using this mode will show that the `Deploy-Route-Rule` value in the response header changes sequentially.
+2 台以上のインスタンスが実行中の場合、このモードで連続してリクエストすると、レスポンスヘッダー内の `Deploy-Route-Rule` の値が順番に変化することを確認できます。
 
 ![12](../../../../../docs/docs-images/p17auto-deploy/12.png)
 
-Note that if no instances have been started by this Auto Deploy, requesting this mode will return an error code: `{"code": 1006, "msg": "route target not found"}`.
+この Auto Deploy によって起動されたインスタンスがない場合、このモードでリクエストするとエラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
 
-### `{Deploy-Route-Target}` Mode
+### `{Deploy-Route-Target}` モード
 
-The request will be forwarded to a specified instance and return the result.
+リクエストは指定したインスタンスへ転送され、結果が返されます。
 
 ```bash
 curl -i \
@@ -166,15 +166,15 @@ curl -i \
   -H "Deploy-Route-Rule: xykemlvy"
 ```
 
-This mode is very useful when a request requires multiple interface calls consecutively.
+このモードは、1 つのリクエストで複数回のインターフェース呼び出しを連続して行う必要がある場合に非常に便利です。
 
 ![13](../../../../../docs/docs-images/p17auto-deploy/13.png)
 
-Note that if the specified **Deploy-Route-Target** cannot be found, calling this mode will return an error code: `{"code": 1006, "msg": "route target not found"}`.
+指定した **Deploy-Route-Target** が見つからない場合、このモードを呼び出すとエラーコード `{"code": 1006, "msg": "route target not found"}` が返されます。
 
-## Contact Us
+## お問い合わせ
 
-If you have any questions or suggestions while using Glows.ai, feel free to contact us via email, Discord, or Line.
+Glows.ai の利用中にご不明点やご提案がある場合は、メール、Discord、または Line でお気軽にお問い合わせください。
 
 **Email:** [support@glows.ai](mailto:support@glows.ai)
 
