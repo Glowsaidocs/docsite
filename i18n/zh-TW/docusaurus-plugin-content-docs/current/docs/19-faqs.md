@@ -17,7 +17,7 @@ sidebar_position: 19
 - Python 套件、系統軟體、環境設定等需要下次沿用的內容，建議在釋放執行個體前按一下 `Take Snapshot` 建立環境快照。
 - Snapshot 會保存 DataDrive 以外的執行個體內部變更。Snapshot 越小，後續從快照建立新執行個體通常越快。
 
-DataDrive 與 Snapshot 需在 Storage Space 頁面購買儲存方案。您可依實際需求分配 DataDrive 與 Snapshot 的容量。
+DataDrive 與 Snapshot 需在 `Storage Space` 頁面購買儲存方案。您可依實際需求分配 DataDrive 與 Snapshot 的容量。
 
 ### 2. 哪裡可以看到已上傳到 DataDrive 的檔案？
 
@@ -81,7 +81,7 @@ DataDrive PC 版下載連結：[https://glows.ai/datadrive](https://glows.ai/dat
 
 可以。DataDrive 支援離線上傳與下載，不需要先啟動 GPU 執行個體。
 
-- DataDrive 教學影片：[Datadrive](https://www.youtube.com/watch?v=_MtYfNKQ3xA)
+- DataDrive 教程：[Datadrive](https://docs.glows.ai/docs/datadrive)
 - DataDrive PC 版：[Download](https://glows.ai/datadrive)
 
 ### 13. 已啟動的 VM 可以新增或掛載 DataDrive 嗎？
@@ -341,25 +341,3 @@ H200 GPU 隨用隨付價格請以平台頁面顯示為準。長期租用或包�
 ### 9. 軟體或平台合作客戶如何計價？
 
 可依使用量、儲存量與合作模式評估計費方案。若涉及代理、轉售或平台合作，可聯絡業務團隊洽談合作協議。
-
-## 服務保障與補償
-
-### 1. 是否提供 SLA？
-
-提供。平台目前主要針對硬體與儲存服務提供服務水準承諾：
-
-- 核心硬體服務：99% 可用性。
-- DataDrive 儲存服務：99.9% 可用性。
-
-具體條款以正式服務協議為準。
-
-### 2. 若服務中斷，是否有備援與補償政策？
-
-若因硬體或平台原因導致租用的執行個體不可用，我們會儘快核查故障時間與原因，優先恢復服務與資料，並依情況提供補償。
-
-基礎補償參考：
-
-- 故障 1-3 小時：補償 6 小時。
-- 故障 6-12 小時：補償 12 小時。
-
-若故障造成資料遺失、任務中斷且無法恢復等重大影響，平台會依具體情況進一步評估。除物理硬碟故障等特殊情況外，正常已存資料通常不會遺失。重要資料建議優先存放於 DataDrive。
